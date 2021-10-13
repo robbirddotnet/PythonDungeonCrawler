@@ -1,0 +1,46 @@
+
+names = {
+    "first": [
+        'Johnny',
+        'Jack',
+        'Joe',
+        'Jill',
+        'James',
+        'Jerry',
+        'Johnson',
+        'Jelly',
+        'Jenny',
+        'Jessica',
+        'Jotaro',
+        'Jimmy',
+        'Jello',
+        'Janet',
+        'Joseph'
+    ],
+    "last": [
+        'Skydancer',
+        'Hexem',
+        'Puddles',
+        'Bloodrose',
+        'Aurelia',
+        'Knickers',
+        'Darkheart',
+        'Venus',
+        'Huntsman',
+        'Mysterious',
+        'Banana',
+        'Dallas',
+        'Cloud',
+        'Amethyst',
+        'Orlando',
+        'Caboose',
+        'Morningstar',
+        'Littlepaws',
+        'Dakota',
+        'Tater',
+        'Ravenhurst',
+        'Blackwood',
+        'Mercury',
+        'Vermillion'
+    ]
+}
