@@ -77,3 +77,14 @@ background = [
     'You became a warlock after making a pact with a horrifying being.',
     'After years of study you mastered the art of magic to become a wizard.'
 ]
+
+silly = [
+    'You smell funny.',
+    'Under a full moon you turn into a potato.',
+    'You are unable to jump.',
+    'No one can spell your name correctly.',
+    'People forget you within minutes.',
+    'Rumors say you are weak to pickles.',
+    'You were once caught by pirates after sleeping in a barrel.',
+    'Everyone forgets your birthday.'
+]
