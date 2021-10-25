@@ -1,3 +1,4 @@
+import random
 
 names = {
     "first": [
@@ -88,3 +89,17 @@ silly = [
     'You were once caught by pirates after sleeping in a barrel.',
     'Everyone forgets your birthday.'
 ]
+
+
+def generateCharacter():
+    # Assemble a character backstory by randomly choosing from the above lists
+    characterName = str(random.choice(
+        names["first"])) + ' ' + str(random.choice(names["last"]))
+    characterBirthplace = str(random.choice(birthplace))
+    characterBackground = str(random.choice(background))
+    characterSilly = str(random.choice(silly))
+
+    print('Name: {name}'.format(name=characterName))
+    print("You were born {birthplace}.".format(birthplace=characterBirthplace))
+    print(str(characterBackground))
+    print(str(characterSilly))
