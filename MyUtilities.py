@@ -1,3 +1,4 @@
+import os
 import random
 
 
@@ -30,3 +31,8 @@ def targetRoller(allRolls, targetNumber):
 
     # print('num passed : ' + str(numPassed))
     return numPassed
+
+
+def clearScreen():
+    # Clear the user's terminal.
+    os.system('clear')
