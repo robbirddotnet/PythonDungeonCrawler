@@ -1,34 +1,17 @@
-from MyUtilities import dieRoller, targetRoller
+from PlayerGenerator import generateCharacter
+from MyUtilities import clearScreen
 
 
 def main():
     while True:
+        generateCharacter()
+        response = input('\nDo you like this character? (y/n): ')
 
-        quantity = int(input('How many times to roll (0 to quit): '))
-
-        if quantity == 0:
-            quit()
-
-        sides = int(input('Sides per die: '))
-
-        if sides <= 1:
-            print('Cannot have a one-sided die.')
+        if response.lower() == 'n':
+            clearScreen()
             continue
-
-        target = int(input('Target to beat: '))
-
-        rolls = dieRoller(quantity, sides)
-
-        print("Your rolls: ")
-
-        for x in rolls:
-            print(x, end=' ')
-
-        print()
-        if target > 0:
-            # rolls = dieRoller(quantity, sides)
-            successes = targetRoller(rolls, target)
-            print('Number of successes: ' + str(successes))
+        elif response.lower() == 'y':
+            break
 
 
 main()
