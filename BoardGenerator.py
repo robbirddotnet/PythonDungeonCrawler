@@ -1,9 +1,9 @@
-def createBoard():
+def createBoard(sizeHor, sizeVert):
     board = []
 
-    for x in range(0, 5):
+    for x in range(0, sizeVert):
         board.append([])
-        for y in range(0, 5):
+        for y in range(0, sizeHor):
             board[x].append('.')
 
     return board
