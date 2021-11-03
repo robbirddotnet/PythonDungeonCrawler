@@ -121,8 +121,6 @@ def generateCharacter(level):
         "Health": healthValue
     })
 
-    displayHistory(player)
-
     return player
 
 
