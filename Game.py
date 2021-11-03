@@ -1,5 +1,6 @@
-from PlayerGenerator import generateCharacter, displayHistory, displayStats
 from MyUtilities import clearScreen
+from PlayerGenerator import generateCharacter, displayHistory, displayStats
+from BoardGenerator import createBoard, showBoard, placePlayer
 
 
 def main():
@@ -16,6 +17,16 @@ def main():
             continue
         elif response.lower() == 'y':
             break
+            clearScreen()
+
+    print("Please input board size preferences.")
+    boardWidth = int(input("Width: "))
+    boardHeight = int(input("Height: "))
+
+    gameBoard = createBoard(boardWidth, boardHeight)
+    placePlayer(gameBoard, you)
+    clearScreen()
+    showBoard(gameBoard)
 
 
 main()
