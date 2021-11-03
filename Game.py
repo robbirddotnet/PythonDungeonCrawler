@@ -4,11 +4,11 @@ from MyUtilities import clearScreen
 
 def main():
     while True:
-        generateCharacter()
+        clearScreen()
+        generateCharacter(1)
         response = input('\nDo you like this character? (y/n): ')
 
         if response.lower() == 'n':
-            clearScreen()
             continue
         elif response.lower() == 'y':
             break

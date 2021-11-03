@@ -1,4 +1,5 @@
 import random
+from MyUtilities import dieRoller
 
 names = {
     "first": [
@@ -91,15 +92,39 @@ silly = [
 ]
 
 
-def generateCharacter():
+def generateCharacter(level):
     # Assemble a character backstory by randomly choosing from the above lists
-    characterName = str(random.choice(
+    player = {}
+
+    player["name"] = str(random.choice(
         names["first"])) + ' ' + str(random.choice(names["last"]))
-    characterBirthplace = str(random.choice(birthplace))
+    # characterBirthplace = str(random.choice(birthplace))
+    characterBirthplace = "You were born {birthplace}.".format(
+        birthplace=str(random.choice(birthplace)))
     characterBackground = str(random.choice(background))
     characterSilly = str(random.choice(silly))
 
-    print('Name: {name}'.format(name=characterName))
-    print("You were born {birthplace}.".format(birthplace=characterBirthplace))
-    print(str(characterBackground))
-    print(str(characterSilly))
+    attackValue = int(sum(dieRoller(3, 6)) + sum(dieRoller(level, 4)))
+    defenseValue = int(sum(dieRoller(3, 6)) + sum(dieRoller(level, 4)))
+    healthValue = int(sum(dieRoller(5, 6)) + sum(dieRoller(level, 4)))
+
+    player.update({
+        # "name": characterName,
+        "history":  {
+            "birthplace": characterBirthplace,
+            "background": characterBackground,
+            "silly": characterSilly
+        },
+        "level": level,
+        "row": 0,
+        "col": 0,
+        "Attack": attackValue,
+        "Defense": defenseValue,
+        "Health": healthValue
+    })
+    #
+    # for x in player:
+    #     print(x)
+    print(player)
+
+    return player
