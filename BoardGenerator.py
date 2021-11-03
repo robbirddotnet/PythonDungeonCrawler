@@ -1,3 +1,6 @@
+import random
+
+
 def createBoard(sizeHor, sizeVert):
     board = []
 
@@ -12,3 +15,18 @@ def createBoard(sizeHor, sizeVert):
 def showBoard(board):
     for row in board:
         print(''.join(row))
+
+
+def placePlayer(board, player):
+    width = len(board[0])
+    height = len(board)
+
+    playerRow = random.randrange(0, width)
+    playerCol = random.randrange(0, height)
+
+    player['row'] = playerRow
+    player['col'] = playerCol
+
+    board[playerRow][playerCol] = "@"
+
+    return board, player
