@@ -5,7 +5,7 @@ from MyUtilities import clearScreen
 def main():
     while True:
         clearScreen()
-        generateCharacter(1)
+        you = generateCharacter(1)
         response = input('\nDo you like this character? (y/n): ')
 
         if response.lower() == 'n':

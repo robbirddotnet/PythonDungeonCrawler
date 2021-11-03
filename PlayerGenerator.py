@@ -98,7 +98,6 @@ def generateCharacter(level):
 
     player["name"] = str(random.choice(
         names["first"])) + ' ' + str(random.choice(names["last"]))
-    # characterBirthplace = str(random.choice(birthplace))
     characterBirthplace = "You were born {birthplace}.".format(
         birthplace=str(random.choice(birthplace)))
     characterBackground = str(random.choice(background))
@@ -109,7 +108,6 @@ def generateCharacter(level):
     healthValue = int(sum(dieRoller(5, 6)) + sum(dieRoller(level, 4)))
 
     player.update({
-        # "name": characterName,
         "history":  {
             "birthplace": characterBirthplace,
             "background": characterBackground,
@@ -122,9 +120,22 @@ def generateCharacter(level):
         "Defense": defenseValue,
         "Health": healthValue
     })
-    #
-    # for x in player:
-    #     print(x)
-    print(player)
+
+    displayHistory(player)
 
     return player
+
+
+def displayHistory(player):
+    print('Name: {name}'.format(name=player["name"]))
+    print("You were born {birthplace}.".format(
+        birthplace=player["history"]['birthplace']))
+    print(str(player["history"]['background']))
+    print(str(player["history"]['silly']))
+
+
+def displayStats(player):
+    print("Level: " + str(player["level"]))
+    print("Attack: " + str(player["Attack"]))
+    print("Defense: " + str(player["Defense"]))
+    print("Health: " + str(player["Health"]))
