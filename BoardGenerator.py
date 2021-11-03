@@ -7,3 +7,8 @@ def createBoard():
             board[x].append('.')
 
     return board
+
+
+def showBoard(board):
+    for row in board:
+        print(''.join(row))
