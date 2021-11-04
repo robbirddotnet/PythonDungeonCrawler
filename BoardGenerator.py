@@ -14,7 +14,7 @@ def createBoard(sizeHor, sizeVert):
 
 def showBoard(board):
     for row in board:
-        print(''.join(row))
+        print(' '.join(row))
 
 
 def placePlayer(board, player):
