@@ -21,8 +21,8 @@ def placePlayer(board, player):
     width = len(board[0])
     height = len(board)
 
-    playerRow = random.randrange(0, width)
-    playerCol = random.randrange(0, height)
+    playerRow = random.randrange(0, width - 1)
+    playerCol = random.randrange(0, height - 1)
 
     player['row'] = playerRow
     player['col'] = playerCol
