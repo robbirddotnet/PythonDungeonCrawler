@@ -27,6 +27,6 @@ def placePlayer(board, player):
     player['row'] = playerRow
     player['col'] = playerCol
 
-    board[playerRow][playerCol] = "@"
+    board[playerCol][playerRow] = "@"
 
     return board, player
