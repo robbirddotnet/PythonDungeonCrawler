@@ -1,6 +1,6 @@
 from MyUtilities import clearScreen
-from PlayerGenerator import generateCharacter, displayHistory, displayStats
-from BoardGenerator import createBoard, showBoard, placePlayer
+from PlayerGenerator import *
+from BoardGenerator import *
 
 
 def main():
@@ -24,7 +24,7 @@ def main():
     boardHeight = int(input("Height: "))
 
     gameBoard = createBoard(boardWidth, boardHeight)
-    placePlayer(gameBoard, you)
+    initPlayerPos(gameBoard, you)
     clearScreen()
     showBoard(gameBoard)
 

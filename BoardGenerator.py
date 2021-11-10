@@ -17,7 +17,7 @@ def showBoard(board):
         print(' '.join(row))
 
 
-def placePlayer(board, player):
+def initPlayerPos(board, player):
     width = len(board[0])
     height = len(board)
 
