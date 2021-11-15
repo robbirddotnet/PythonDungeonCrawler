@@ -24,9 +24,15 @@ def initPlayerPos(board, player):
     playerRow = random.randrange(0, width)
     playerCol = random.randrange(0, height)
 
-    player['row'] = playerRow
-    player['col'] = playerCol
-
-    board[playerCol][playerRow] = "@"
+    placePlayer(board, player, playerRow, playerCol)
 
     return board, player
+
+
+def placePlayer(board, player, newX, newY):
+    # clear old position
+    board[player['col']][player['row']] = "."
+    # assign new position
+    player['col'] = newY
+    player['row'] = newX
+    board[newY][newX] = "@"
