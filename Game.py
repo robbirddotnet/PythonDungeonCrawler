@@ -3,6 +3,20 @@ from PlayerGenerator import *
 from BoardGenerator import *
 
 
+def getPlayerDirection():
+    while True:
+        inputDir = input("Which direction? (WASD): ").lower()
+        # except:
+        # print('Please enter W, A, S, or D.')
+
+        for char in "w a s d".split():
+            if inputDir == char:
+                return inputDir
+            else:
+                continue
+                print('Please input W, A, S, or D.')
+
+
 def main():
     while True:
         clearScreen()
