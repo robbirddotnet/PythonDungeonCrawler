@@ -17,6 +17,25 @@ def getPlayerDirection():
                 print('Please input W, A, S, or D.')
 
 
+def calcNewCoords(dir, currentX, currentY):
+    # calculate move direction
+    # vertical movement is logically inverted
+    if dir == 'w':  # up
+        newX = currentX
+        newY = currentY - 1
+    elif dir == 's':  # down
+        newX = currentX
+        newY = currentY + 1
+    elif dir == 'd':  # right
+        newX = currentX + 1
+        newY = currentY
+    elif dir == 'a':  # left
+        newX = currentX - 1
+        newY = currentY
+
+    return newX, newY
+
+
 def main():
     while True:
         clearScreen()
