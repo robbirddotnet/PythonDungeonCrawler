@@ -6,8 +6,6 @@ from BoardGenerator import *
 def getPlayerDirection():
     while True:
         inputDir = input("Which direction? (WASD): ").lower()
-        # except:
-        # print('Please enter W, A, S, or D.')
 
         for char in "w a s d".split():
             if inputDir == char:
@@ -36,6 +34,27 @@ def calcNewCoords(dir, currentX, currentY):
     return newX, newY
 
 
+def commandPlayer(board, player):
+    while True:
+        clearScreen()
+        showBoard(board)
+        inputDir = getPlayerDirection()
+
+        newX, newY = calcNewCoords(inputDir, player['row'], player['col'])
+
+        width = len(board[0]) - 1
+        height = len(board) - 1
+
+        if newX < 0 or newX > width or newY < 0 or newY > height:
+            # Invalid direction. Out of bounds.
+            continue
+
+        # update new player location on the board to a "@"
+        placePlayer(board, player, newX, newY)
+
+    return board, player
+
+
 def main():
     while True:
         clearScreen()
@@ -60,6 +79,9 @@ def main():
     initPlayerPos(gameBoard, you)
     clearScreen()
     showBoard(gameBoard)
+
+    while True:
+        commandPlayer(gameBoard, you)
 
 
 main()
