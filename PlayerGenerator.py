@@ -1,5 +1,5 @@
 import random
-from MyUtilities import *
+from MyUtilities import dieRoller
 
 names = {
     "first": [

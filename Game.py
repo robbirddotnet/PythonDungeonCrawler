@@ -32,5 +32,4 @@ def main():
     while True:
         commandPlayer(gameBoard, you)
 
-
 main()
