@@ -29,3 +29,13 @@ def createEnemy(player):
     enemy = generateCharacter(player["level"])
     enemy["name"] = random.choice(enemyNameList)
     return enemy
+
+
+def combatIntro(enemy):
+    print(str(enemy["name"]) + " approaches! Prepare for combat.\n")
+
+    input("Press Enter to continue.")
+
+
+def attackRoll(bonus):
+    return dieRoller(1, 20)[0] + bonus
