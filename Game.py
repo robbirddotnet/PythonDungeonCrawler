@@ -2,6 +2,7 @@ from PlayerGenerator import generateCharacter, displayHistory, displayStats
 from BoardGenerator import createBoard, initPlayerPos, showBoard
 from MyUtilities import clearScreen
 from PlayerActions import commandPlayer
+from Combat import *
 
 
 def main():

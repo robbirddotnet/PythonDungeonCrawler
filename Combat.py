@@ -1,4 +1,5 @@
 from MyUtilities import dieRoller, clearScreen
+import math
 from PlayerGenerator import generateCharacter
 import random
 
@@ -39,3 +40,24 @@ def combatIntro(enemy):
 
 def attackRoll(bonus):
     return dieRoller(1, 20)[0] + bonus
+
+
+def calcDamage(attack, defense):
+    print("Calcuating damage.")
+    print("attack: " + str(attack), end='\t')
+    print("defense: " + str(defense), end='\t')
+
+    damage = attack - defense - 10
+    print("damage: " + str(damage))
+
+    if damage < 0:
+        damage = 0
+
+    return damage
+
+
+def checkHealth(entity):
+    if entity["Health"] <= 0:
+        return True
+    else:
+        return False
