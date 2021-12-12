@@ -62,6 +62,42 @@ def printDamage(value, who):
     else:
         print(str(who) + " dealt " + str(value) + " damage!")
 
+
+def powerAttack(player, enemy):
+    atk = attackRoll(calcBonus(player, "Attack") * 2)
+    dmg = math.floor(calcDamage(atk, calcBonus(enemy, "Defense")))
+    enemy["Health"] -= dmg
+    printDamage(dmg, player["name"])
+
+
+def quickAttack(player, enemy):
+    atk = attackRoll(calcBonus(player, "Attack") * 2)
+    dmg = math.floor(calcDamage(atk, math.floor(
+        calcBonus(enemy, "Defense") * 1.5)))
+    enemy["Health"] -= dmg
+    printDamage(dmg, player["name"])
+
+
+def normalAttack(player, enemy):
+    atk = attackRoll(calcBonus(player, "Attack"))
+    dmg = math.floor(calcDamage(atk, math.floor(calcBonus(enemy, "Defense"))))
+    enemy["Health"] -= dmg
+    printDamage(dmg, player["name"])
+
+
+def counterAttack(player, enemy):
+    atk = attackRoll(0)
+    dmg = math.floor(calcDamage(atk, math.floor(calcBonus(enemy, "Defense"))))
+    enemy["Health"] -= dmg
+    printDamage(dmg, player["name"])
+
+
+def enemyAttack(player, enemy, atkMod=1, defMod=1):
+    atk = attackRoll(calcBonus(enemy, "Attack") * atkMod)
+    dmg = math.floor(calcDamage(atk, calcBonus(player, "Defense") * defMod))
+    player["Health"] -= dmg
+    printDamage(dmg, enemy["name"])
+
 def checkHealth(entity):
     if entity["Health"] <= 0:
         return True
