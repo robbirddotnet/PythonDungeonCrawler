@@ -56,8 +56,21 @@ def calcDamage(attack, defense):
     return damage
 
 
+def printDamage(value, who):
+    if value <= 0:
+        print(str(who) + " missed!")
+    else:
+        print(str(who) + " dealt " + str(value) + " damage!")
+
 def checkHealth(entity):
     if entity["Health"] <= 0:
         return True
     else:
         return False
+
+def showCombatInstructions():
+    string = """\n1. Normal Attack
+2. Quick attack
+3. Power attack
+4. Counter attack"""
+    print(string)
