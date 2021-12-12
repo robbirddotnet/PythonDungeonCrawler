@@ -58,3 +58,8 @@ def minorTreasure(player):
     print(str(random.choice(minorSetup)) + str(random.choice(minorNoun)) + '.')
 
     print("+" + str(treasureValue) + " " + str(type))
+    applyTreasureStats(type, treasureValue, player)
+
+
+def applyTreasureStats(key, value, player):
+    player[key] += value

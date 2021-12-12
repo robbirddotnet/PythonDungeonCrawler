@@ -102,6 +102,7 @@ def generateCharacter(level):
         birthplace=str(random.choice(birthplace)))
     characterBackground = str(random.choice(background))
     characterSilly = str(random.choice(silly))
+    player["treasuresFound"] = []
 
     attackValue = int(sum(dieRoller(3, 6)) + sum(dieRoller(level, 4)))
     defenseValue = int(sum(dieRoller(3, 6)) + sum(dieRoller(level, 4)))
