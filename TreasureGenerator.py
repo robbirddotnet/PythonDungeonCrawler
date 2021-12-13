@@ -63,3 +63,13 @@ def minorTreasure(player):
 
 def applyTreasureStats(key, value, player):
     player[key] += value
+
+def rollMinorOrCombat(player):
+    # Roll to see if the player gets a treasure or combat.
+    # On a six, get treasure. On a one, enter combat.
+    value = dieRoller(1, 6)[0]
+    print("Minor Treasure roll: " + str(value))
+
+    return value
+
+

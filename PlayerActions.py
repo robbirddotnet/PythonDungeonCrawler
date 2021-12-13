@@ -1,5 +1,6 @@
 from MyUtilities import clearScreen
 from BoardGenerator import showBoard, placePlayer
+from TreasureGenerator import rollMinorOrCombat
 
 
 def getPlayerDirection():
@@ -34,9 +35,8 @@ def calcNewCoords(dir, currentX, currentY):
 
 
 def commandPlayer(board, player):
-    while True:
-        clearScreen()
-        showBoard(board)
+    moved = False
+    while moved == False:
         inputDir = getPlayerDirection()
 
         newX, newY = calcNewCoords(inputDir, player['row'], player['col'])
@@ -45,8 +45,15 @@ def commandPlayer(board, player):
         height = len(board) - 1
 
         if newX < 0 or newX > width or newY < 0 or newY > height:
-            continue
+            # continue
+            pass
+        else:
+            moved = True
 
         placePlayer(board, player, newX, newY)
 
-    return board, player
+    didEnterCombat = rollMinorOrCombat(player)
+    print("Combat" + str(didEnterCombat))
+    return didEnterCombat
+
+    # return board, player

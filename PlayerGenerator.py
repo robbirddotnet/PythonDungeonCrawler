@@ -119,7 +119,9 @@ def generateCharacter(level):
         "col": 0,
         "Attack": attackValue,
         "Defense": defenseValue,
-        "Health": healthValue
+        "Health": healthValue,
+        "exp": 0,
+        "enemiesKilled": []
     })
 
     return player

@@ -23,13 +23,17 @@ enemyNameList = [
     "Evil Genie",
     "Slime",
     "Beholder"
-]
+    ]
 
 
 def createEnemy(player):
     enemy = generateCharacter(player["level"])
     enemy["name"] = random.choice(enemyNameList)
     return enemy
+
+
+def pressEnter():
+    input("Press Enter to continue.")
 
 
 def combatIntro(enemy):
@@ -43,13 +47,12 @@ def attackRoll(bonus):
 
 
 def calcDamage(attack, defense):
-    print("Calcuating damage.")
-    print("attack: " + str(attack), end='\t')
-    print("defense: " + str(defense), end='\t')
-
+    # If the damage goes below zero, set it to zero.
+    # print("Calcuating damage.")
+    # print("attack: " + str(attack), end='\t')
+    # print("defense: " + str(defense), end='\t')
     damage = attack - defense - 10
-    print("damage: " + str(damage))
-
+    # print("damage: " + str(damage))
     if damage < 0:
         damage = 0
 
@@ -92,11 +95,16 @@ def counterAttack(player, enemy):
     printDamage(dmg, player["name"])
 
 
+def calcBonus(entity, type):
+    return math.floor(entity[type] / 5)
+
+
 def enemyAttack(player, enemy, atkMod=1, defMod=1):
     atk = attackRoll(calcBonus(enemy, "Attack") * atkMod)
     dmg = math.floor(calcDamage(atk, calcBonus(player, "Defense") * defMod))
     player["Health"] -= dmg
     printDamage(dmg, enemy["name"])
+
 
 def checkHealth(entity):
     if entity["Health"] <= 0:
@@ -104,9 +112,78 @@ def checkHealth(entity):
     else:
         return False
 
+
+def displayCombatStats(player, enemy):
+    # print("Your level: " + str(player["level"]))
+    print("Your health: " + str(player["Health"]))
+    print(str(enemy["name"]) + " health: " + str(enemy["Health"]))
+
+
 def showCombatInstructions():
     string = """\n1. Normal Attack
 2. Quick attack
 3. Power attack
 4. Counter attack"""
     print(string)
+
+
+def combatLoop(player, enemy):
+    playerMaxHP = player["Health"]
+    clearScreen()
+    combatIntro(enemy)
+
+    while player["Health"] > 0 and enemy["Health"] > 0:
+        clearScreen()
+
+        displayCombatStats(player, enemy)
+        showCombatInstructions()
+        atkType = int(input("Your choice: "))
+        enemyAtkMod = 1
+        playerDefMod = 1
+        clearScreen()
+        if atkType == 1:
+            normalAttack(player, enemy)
+        elif atkType == 2:
+            quickAttack(player, enemy)
+        elif atkType == 3:
+            powerAttack(player, enemy)
+            enemyAtkMod = 1.5
+        elif atkType == 4:
+            counterAttack(player, enemy)
+            playerDefMod = 2
+        elif atkType.lower() == 'h' or atkType.lower() == 'help':
+            print(help)
+        pressEnter()
+        clearScreen()
+        if checkHealth(enemy):
+            playerWon = True
+            player["enemiesKilled"].append(enemy["name"])
+            break
+
+        enemyAttack(player, enemy, enemyAtkMod, playerDefMod)
+        if checkHealth(player):
+            playerWon = False
+            break
+        pressEnter()
+
+    clearScreen()
+    if playerWon:
+        exp = 1
+        print(str(enemy["name"]) + " defeated!\n")
+        print(str(exp) + " exp gained.")
+        print("Health restored.")
+        player["Health"] = playerMaxHP
+
+        player["exp"] += 1
+
+        if player["exp"] >= 3:
+            player["exp"] = 0
+            player["level"] += 1
+            print("\nYou are now level " + str(player["level"]))
+
+    elif not playerWon:
+        print("You have died!\n")
+        print("Game over!")
+
+    input("\nPress Enter to continue.")
+    return playerWon
