@@ -48,6 +48,19 @@ minorNoun = [
 ]
 
 
+def genTreasure(board, treasureList, timesToRun):
+    width = len(board[0])
+    height = len(board)
+
+    while timesToRun != 0:
+        object = random.choice(treasureObject)
+        attribute = random.choice(treasureAttribute)
+        name = str(object) + ' of ' + str(attribute)
+
+        row, col = placeTreasure(width, height, name, treasureList)
+        # board[row][col] = "X" # Uncomment to cheat.
+        timesToRun -= 1
+
 def minorTreasure(player):
     # Determine minor treasure type and value with random rolls.
     # Then, display a message from the setup and noun lists.
@@ -67,6 +80,11 @@ def minorTreasure(player):
 def applyTreasureStats(key, value, player):
     # Add the rolled stats from a minor treasure to the player dictionary.
     player[key] += value
+
+
+def majorTreasure():
+    print()
+
 
 def rollMinorOrCombat(player):
     # Roll to see if the player gets a treasure or combat.
