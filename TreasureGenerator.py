@@ -85,6 +85,13 @@ def placeTreasure(width, height, treasureName, treasureList):
     })
     return row, col
 
+
+def checkTreasure(player, treasureList, board):
+    # Check the player's position against the treasure list.
+    # If it's a match, add it to their treasures found list..
+    playY = player['col']
+    playX = player['row']
+
     for booty in treasureList:
         if booty['x'] == playX and booty['y'] == playY:
             addToTreasuresFound(booty['name'], player)
@@ -126,5 +133,7 @@ def rollMinorOrCombat(player):
     return value
 
 
+def addToTreasuresFound(treasure, player):
+    # Adds the found treasure to the player's dictionary
     print("You have found the " + str(treasure) + ".")
     player["treasuresFound"].append(treasure)
