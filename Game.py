@@ -4,6 +4,7 @@ from MyUtilities import clearScreen
 from PlayerActions import commandPlayer
 from TreasureGenerator import *
 from Combat import *
+import math
 
 
 def main():
@@ -33,6 +34,13 @@ def main():
 
     gameBoard = createBoard(boardWidth, boardHeight)
     initPlayerPos(gameBoard, you)
+    greaterTreasures = []
+
+    numTreasures = math.floor((boardWidth + boardHeight) / 3 + 1)
+    print(numTreasures)
+    # while numTreasures > 0:
+    genTreasure(gameBoard, greaterTreasures, numTreasures)
+    # placeTreasure(boardWidth, boardHeight, treasureName, treasureList)
 
     # gameplay loop
     awardMinorTreasure = False
@@ -41,6 +49,8 @@ def main():
         showBoard(gameBoard)
         if awardMinorTreasure:
             minorTreasure(you)
+
+        checkTreasure(you, greaterTreasures, gameBoard)
 
         awardMinorTreasure = False
         minorRoll = commandPlayer(gameBoard, you)

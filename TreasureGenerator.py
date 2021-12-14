@@ -61,6 +61,37 @@ def genTreasure(board, treasureList, timesToRun):
         # board[row][col] = "X" # Uncomment to cheat.
         timesToRun -= 1
 
+
+def placeTreasure(width, height, treasureName, treasureList):
+    # Generate coordinates somewhere within board limits.
+    # Then add it to the list of treasures.
+    repeat = True
+    while repeat:
+        repeat = False
+        row = random.randrange(0, height)
+        col = random.randrange(0, width)
+
+        # Check against existing treasures (booty) for duplicate locations.
+        for booty in treasureList:
+            if booty['x'] == col and booty['y'] == row:
+                repeat = True
+            # else:
+                # continue
+
+    treasureList.append({
+        'name': treasureName,
+        'x': col,
+        'y': row
+    })
+    return row, col
+
+    for booty in treasureList:
+        if booty['x'] == playX and booty['y'] == playY:
+            addToTreasuresFound(booty['name'], player)
+            treasureList.remove(booty)
+            genTreasure(board, treasureList, 1)
+
+
 def minorTreasure(player):
     # Determine minor treasure type and value with random rolls.
     # Then, display a message from the setup and noun lists.
@@ -95,3 +126,5 @@ def rollMinorOrCombat(player):
     return value
 
 
+    print("You have found the " + str(treasure) + ".")
+    player["treasuresFound"].append(treasure)
