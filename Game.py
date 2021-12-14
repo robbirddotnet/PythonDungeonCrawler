@@ -5,6 +5,42 @@ from PlayerActions import commandPlayer
 from TreasureGenerator import *
 from Combat import *
 import math
+import collections
+
+def checkWinState(player):
+    # print("Checking winsate")
+    if player['level'] >= 20:
+        print("PLayer should win")
+        return True
+    else:
+        print("Game should continue")
+        return False
+
+
+def showWinScreen():
+    print("You win!")
+
+
+def showGameOver():
+    print("Game over!")
+
+
+def endOfGameStats(player):
+    # Print out the player's stats and achievements.
+    print(player["name"] + " achieved level " + str(player["level"]))
+    displayStats(player)
+    # If no treasures were found, this will not run.
+    if len(player["treasuresFound"]) > 0:
+        print("Major Treasures unlocked: ")
+        for item in player["treasuresFound"]:
+            print(" * " + str(item))
+    # If no enemies were killed, this will not run.
+    if len(player["enemiesKilled"]) > 0:
+        print("Enemies defeated: ")
+        enemyList = collections.Counter(player["enemiesKilled"])
+        # print(enemyList)
+        for enemy in enemyList:
+            print(str(enemy) + ": " + str(enemyList[enemy]))
 
 
 def main():
@@ -44,6 +80,8 @@ def main():
 
     # gameplay loop
     awardMinorTreasure = False
+    win = False
+
     while True:
         clearScreen()
         showBoard(gameBoard)
@@ -65,5 +103,16 @@ def main():
         elif minorRoll == 6:
             awardMinorTreasure = True
 
+        win = checkWinState(you)
+        if win:
+            break
+
     clearScreen()
+    if win:
+        showWinScreen()
+    else:
+        showGameOver()
+
+    endOfGameStats(you)
+
 main()
