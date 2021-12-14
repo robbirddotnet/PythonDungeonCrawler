@@ -7,6 +7,39 @@ from Combat import *
 import math
 import collections
 
+
+def showTitle():
+    # clear the screen and display the title. Wait for player to start.
+    clearScreen()
+    title = """
+
+    )                                              (
+ ( /(                                     (        )\ )           (                           )
+ )\())    (       )     (                 )\ )    (()/(           )\ )   (            (    ( /(     (
+((_)\    ))\   ( /(    ))\   (       (   (()/(     /(_))   (     (()/(   )\    (      )\   )\())   ))\\
+ _((_)  /((_)  )\())  /((_)  )\      )\   /(_))   (_))     )\ )   /(_)) ((_)   )\ )  ((_) (_))/   /((_)
+| \| | (_))   ((_)\  (_))(  ((_)    ((_) (_) _|   |_ _|   _(_/(  (_) _|  (_)  _(_/(   (_) | |_   (_))
+| .` | / -_)  \ \ /  | || | (_-<   / _ \  |  _|    | |   | ' \))  |  _|  | | | ' \))  | | |  _|  / -_)
+|_|\_| \___|  /_\_\   \_,_| /__/   \___/  |_|     |___|  |_||_|   |_|    |_| |_||_|   |_|  \__|  \___|
+
+"""
+
+    print(title)
+    input("\t\t\t\t\tPress Enter to continue.")
+
+
+def showHelp():
+    help = """The goal of the game is to reach level 20.
+You gain a level for each Greater Treasure you collect.
+Every 3 enemies you defeat grant a level.
+
+Use the WASD keys to move during the Overworld Phase.
+Use the number keys to attack during the Combat Phase."""
+    clearScreen()
+    print(help)
+    input("\nPress Enter to continue.")
+
+
 def checkWinState(player):
     # print("Checking winsate")
     if player['level'] >= 20:
@@ -115,4 +148,7 @@ def main():
 
     endOfGameStats(you)
 
+
+showTitle()
+showHelp()
 main()
