@@ -49,6 +49,9 @@ minorNoun = [
 
 
 def minorTreasure(player):
+    # Determine minor treasure type and value with random rolls.
+    # Then, display a message from the setup and noun lists.
+    # Finally, add the values to the player dictionary.
     type = random.choice(["Health", "Attack", "Defense"])
     if type == 'health':
         treasureValue = sum(dieRoller(2, 4))
@@ -62,6 +65,7 @@ def minorTreasure(player):
 
 
 def applyTreasureStats(key, value, player):
+    # Add the rolled stats from a minor treasure to the player dictionary.
     player[key] += value
 
 def rollMinorOrCombat(player):

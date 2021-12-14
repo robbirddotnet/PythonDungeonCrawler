@@ -27,6 +27,7 @@ enemyNameList = [
 
 
 def createEnemy(player):
+    # Create an enemy to fight, based on player level.
     enemy = generateCharacter(player["level"])
     enemy["name"] = random.choice(enemyNameList)
     return enemy
@@ -47,6 +48,7 @@ def attackRoll(bonus):
 
 
 def calcDamage(attack, defense):
+    # Determine the damage by adding attack bonus and subtracting target's defense.
     # If the damage goes below zero, set it to zero.
     # print("Calcuating damage.")
     # print("attack: " + str(attack), end='\t')
@@ -128,6 +130,8 @@ def showCombatInstructions():
 
 
 def combatLoop(player, enemy):
+    # Ask for player's attack type, then execute it.
+    # Continue until the player or enemy are dead.
     playerMaxHP = player["Health"]
     clearScreen()
     combatIntro(enemy)

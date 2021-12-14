@@ -7,6 +7,9 @@ from Combat import *
 
 
 def main():
+    # Create a character and ask if it is desired.
+    # if the player likes it, continue. Otherwise make a new one.
+    # After that we enter the main game loop.
     while True:
         clearScreen()
         you = generateCharacter(1)

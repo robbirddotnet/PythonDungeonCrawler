@@ -35,6 +35,8 @@ def calcNewCoords(dir, currentX, currentY):
 
 
 def commandPlayer(board, player):
+    # Get player's input for movement phase.
+    # Determine if choice is within bounds, if it is then move.
     moved = False
     while moved == False:
         inputDir = getPlayerDirection()
@@ -45,11 +47,13 @@ def commandPlayer(board, player):
         height = len(board) - 1
 
         if newX < 0 or newX > width or newY < 0 or newY > height:
+            # Invalid direction. Out of bounds.
             # continue
             pass
         else:
             moved = True
 
+        # update new player location on the board to a "@"
         placePlayer(board, player, newX, newY)
 
     didEnterCombat = rollMinorOrCombat(player)
