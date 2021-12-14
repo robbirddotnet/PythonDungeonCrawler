@@ -127,6 +127,21 @@ def generateCharacter(level):
     return player
 
 
+def levelUp(player):
+    # When the player levels up, call this function to increase their stats.
+    # This is to tilt the game in the player's favor.
+    atk = int(dieRoller(1, 4)[0])
+    player["Attack"] += atk
+    defInc = int(dieRoller(1, 4)[0])
+    player["Defense"] += defInc
+    hp = int(dieRoller(1, 6)[0])
+    player["Health"] += hp
+    print("Stats increased!")
+    print("Attack increased by " + str(atk) + "!")
+    print("Defense increased by " + str(defInc) + "!")
+    print("Health increased by " + str(hp) + "!")
+
+
 def displayHistory(player):
     print('Name: {name}'.format(name=player["name"]))
     print("You were born {birthplace}.".format(

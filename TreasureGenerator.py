@@ -95,6 +95,7 @@ def checkTreasure(player, treasureList, board):
     for booty in treasureList:
         if booty['x'] == playX and booty['y'] == playY:
             addToTreasuresFound(booty['name'], player)
+            player["level"] += 1
             treasureList.remove(booty)
             genTreasure(board, treasureList, 1)
 
@@ -135,5 +136,10 @@ def rollMinorOrCombat(player):
 
 def addToTreasuresFound(treasure, player):
     # Adds the found treasure to the player's dictionary
+    # Increment player level. Enemies will scale based on this.
+
+    # I made this change for the winstate, and it felt more natural.
+    # Players feel cooler for leveling up than for having lots of treasures.
     print("You have found the " + str(treasure) + ".")
     player["treasuresFound"].append(treasure)
+    player["level"] += 1

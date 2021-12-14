@@ -1,6 +1,6 @@
 from MyUtilities import dieRoller, clearScreen
 import math
-from PlayerGenerator import generateCharacter
+from PlayerGenerator import generateCharacter, levelUp
 import random
 
 enemyNameList = [
@@ -177,6 +177,7 @@ def combatLoop(player, enemy):
         print(str(exp) + " exp gained.")
         print("Health restored.")
         player["Health"] = playerMaxHP
+        levelUp(player)
 
         player["exp"] += 1
 
