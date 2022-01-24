@@ -95,3 +95,25 @@ class Character:
 
     def __init__(self, level=1):
         self.level = level
+
+        # history stuff
+        self.name = Character.random_name()
+        self.birthplace = Character.random_birthplace()
+        self.background = Character.random_background()
+        self.silly_detail = Character.random_silly()
+
+    def random_name():
+        # create a random name by combining elements from the dictionary of name listsS at the top of the file
+        return str(random.choice(names["first"])) + ' ' + str(random.choice(names["last"]))
+
+    def random_birthplace():
+        # assign the character a birthplace from the list at the top of the file
+        return "You were born {birthplace}.".format(birthplace=str(random.choice(birthplace)))
+
+    def random_background():
+        # give the character a background from the list at the top of the file
+        return str(random.choice(background))
+
+    def random_silly():
+        # give the character a silly detail from the list at the top of the file
+        return str(random.choice(silly))
