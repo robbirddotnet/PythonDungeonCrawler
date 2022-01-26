@@ -1,5 +1,6 @@
 import random
 import os
+from blessed import Terminal
 
 
 def dieRoller(quantityOfDice, numberOfSides):
@@ -25,3 +26,6 @@ def targetRoller(allRolls, targetNumber):
 def clearScreen():
     # Clear the user's terminal.
     os.system('clear')
+
+
+term = Terminal()
