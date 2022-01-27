@@ -7,6 +7,18 @@ class Location():
         self.backcolor = "black"
         self.week = 1
 
+    def Enter(self, player):
+        color = getattr(MyUtilities.term, self.forecolor+"_on_"+self.backcolor)
+        print(color("Hello"))
+
+    def Exit(self, player):
+        color = getattr(MyUtilities.term, self.forecolor+"_on_"+self.backcolor)
+        print(color("Goodbye"))
+
+    def Upkeep(self):
+        # called when time advances
+        self.week += 1
+
 # term = Terminal()
 # with term.location(0, term.height - 1):
 #     # print(getattr(term, "red_on_blue")+'ALL SYSTEMS GO')
