@@ -105,6 +105,10 @@ class Character:
         self.int = Character.genStat()
         self.wis = Character.genStat()
         self.cha = Character.genStat()
+        self.characterClass = ""
+        self.health = Character.RollHealth(self)
+        self.defense = 10 + Character.statMod(self.con)
+        self.attack = 10 + Character.statMod(self.str)  # TODO: separate by class
 
         # history stuff
         self.name = Character.random_name()
@@ -128,10 +132,37 @@ class Character:
         # give the character a silly detail from the list at the top of the file
         return str(random.choice(silly))
 
+    def RollHealth(character):
+        maxRoll = 0
+        if character.characterClass == 'Barbarian':
+            maxRoll = 12
+        elif character.characterClass == 'Wizard':
+            maxRoll = 6
+        elif character.characterClass == 'Paladin' or character.characterClass == 'Fighter':
+            maxRoll = 10
+        elif character.characterClass == 'Rogue' or character.characterClass == 'Bard' or character.characterClass == 'Cleric':
+            maxRoll = 8
+
+        if character.level == 1:
+            healthRoll = maxRoll
+        else:
+            healthRoll = sum(dieRoller(1, maxRoll))
+
+        return healthRoll + Character.statMod(character.con)
+
     def genStat():
+        # roll 4d6, then drop the lowest number.
+        # add the sum and return them.
         rolls = dieRoller(4, 6)
         rolls.sort()
         # print(rolls)
         del rolls[0]
         return sum(rolls)
+
+    def statMod(value):
+        mod = math.floor(value / 2 - 5)
+        if mod <= 0:
+            return 0
+        else:
+            return mod
 
