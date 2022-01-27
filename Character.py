@@ -105,7 +105,7 @@ class Character:
         self.int = Character.genStat()
         self.wis = Character.genStat()
         self.cha = Character.genStat()
-        self.characterClass = ""
+        self.characterClass = Character.GetClass(self)
         self.health = Character.RollHealth(self)
         self.defense = 10 + Character.statMod(self.con)
         self.attack = 10 + Character.statMod(self.str)  # TODO: separate by class
@@ -149,6 +149,26 @@ class Character:
             healthRoll = sum(dieRoller(1, maxRoll))
 
         return healthRoll + Character.statMod(character.con)
+
+    def GetClass(character):
+        if character.int >= 15:
+            return 'Wizard'
+        elif character.cha >= 15:
+            if character.str >= 15:
+                return 'Paladin'
+            else:
+                return 'Bard'
+        elif character.wis >= 15:
+            return 'Cleric'
+        elif character.dex >= 15:
+            if character.con >= 15:
+                return 'Fighter'
+            else:
+                return 'Rogue'
+        elif character.str >= 15:
+            return 'Barbarian'
+        else:
+            return 'Fighter'
 
     def genStat():
         # roll 4d6, then drop the lowest number.
