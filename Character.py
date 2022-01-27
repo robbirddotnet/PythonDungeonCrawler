@@ -1,3 +1,7 @@
+from MyUtilities import dieRoller
+import math
+import random
+
 
 names = {
     "first": [
@@ -95,6 +99,12 @@ class Character:
 
     def __init__(self, level=1):
         self.level = level
+        self.str = Character.genStat()
+        self.dex = Character.genStat()
+        self.con = Character.genStat()
+        self.int = Character.genStat()
+        self.wis = Character.genStat()
+        self.cha = Character.genStat()
 
         # history stuff
         self.name = Character.random_name()
@@ -117,3 +127,11 @@ class Character:
     def random_silly():
         # give the character a silly detail from the list at the top of the file
         return str(random.choice(silly))
+
+    def genStat():
+        rolls = dieRoller(4, 6)
+        rolls.sort()
+        # print(rolls)
+        del rolls[0]
+        return sum(rolls)
+
