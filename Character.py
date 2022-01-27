@@ -186,3 +186,18 @@ class Character:
         else:
             return mod
 
+    def __str__(self):  # string magic method
+        returnString = ""
+        returnString += str(self.name) + "\n"
+        returnString += "Level " + str(self.level) + " " + str(self.characterClass) + "\n"
+        returnString += "Health: " + str(self.health) + "\n"
+        returnString += "Defense: " + str(self.defense) + "\n"
+        returnString += "Attack: " + str(self.attack) + "\n"
+        returnString += "Strength: " + str(self.str) + "\n"
+        returnString += "Dexterity: " + str(self.dex) + "\n"
+        returnString += "Constitution: " + str(self.con) + "\n"
+        returnString += "Intelligence: " + str(self.int) + "\n"
+        returnString += "Wisdom: " + str(self.wis) + "\n"
+        returnString += "Charisma: " + str(self.cha) + "\n\n"
+        returnString += "Background: " + str(self.birthplace) + " " + str(self.background) + " " + str(self.silly_detail)
+        return returnString
